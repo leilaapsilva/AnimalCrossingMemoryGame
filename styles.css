@@ -7,7 +7,8 @@
   body {
     height: 100vh;
     display: flex;
-    background: #060AB2;
+    /*background: #060AB2;*/
+    background-image: url("img/background1.jpg");
   }
   
   .memory-game {
@@ -43,10 +44,10 @@
   .back-face {
     width: 100%;
     height: 100%;
-    padding: 20px;
+    padding: 10px;
     position: absolute;
     border-radius: 5px;
-    background: #1C7CCC;
+    background: rgb(255, 255, 255);
     backface-visibility: hidden;
   }
   
