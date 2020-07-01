@@ -1,23 +1,36 @@
 
 
 function menuScene(){
-  var startButton = document.createElement("button");
+
+  //Start Button
+  var startButton = document.createElement("img");
   startButton.setAttribute("id", startButton);
-  startButton.innerHTML = "Start";
-  startButton.className = "start-button";
+  //startButton.innerHTML = "Start";
+  startButton.className = "menu-button";
+  startButton.src = "img/isabelle.png";
+  startButton.id = "isabelle";
+  startButton.setAttribute("width", "300px");
   //startButton.src = "img/play.png";
 
+  // var creditsButton = document.createElement("button");
+  // creditsButton.setAttribute("id", creditsButton);
+  // creditsButton.innerHTML = "Créditos";
+  // creditsButton.className = "menu-button";
+
+
+  //Menu com botões
   var menuDiv = document.createElement("div");
-
   menuDiv.appendChild(startButton);
+  // menuDiv.appendChild(creditsButton);
 
-  document.body.appendChild(menuDiv);
 
-  //var section = document.getElementById("section");
-  //section.appendChild(menuDiv);
+  //adiciona div à section
+  var menuSection = document.getElementById("menu-section");
+  menuSection.appendChild(menuDiv);
+
 
   startButton.addEventListener ("click", function() {
-    menuDiv.remove();
+    menuSection.remove();
     gameScene();
   });
 }

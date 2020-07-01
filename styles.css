@@ -19,6 +19,17 @@
     flex-wrap: wrap;
     perspective: 1000px;
   }
+
+  .menu-class {
+    width: 900px;
+    height: 800px;
+    margin: auto;
+    display: flex;
+    flex-wrap: wrap;
+    perspective: 1000px;
+  }
+
+
   
   .memory-card {
     width: calc(16.666% - 10px);
@@ -55,13 +66,22 @@
     transform: rotateY(180deg);
   }
 
-  .start-button {
-    position: relative;
-    margin-top: 20px;
+  .menu-button {
+
+    margin: 0;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
     line-height: 60px;
     font-weight: bold;
     padding: 0 40px;
-    background: rgb(114, 250, 216);
-    border: none;
+    border-radius: 5px;
+    /* background: rgb(114, 250, 216); */
   }
   
+  #isabelle{
+    -webkit-filter: drop-shadow(5px 3px 0 white) drop-shadow(-px -1px 0 white);
+    filter:drop-shadow(5px 3px 0 white) drop-shadow(-1px -1px 0 white);
+  }
