@@ -1,14 +1,20 @@
+
+
 function menuScene(){
   var startButton = document.createElement("button");
   startButton.setAttribute("id", startButton);
   startButton.innerHTML = "Start";
+  startButton.className = "start-button";
+  //startButton.src = "img/play.png";
 
   var menuDiv = document.createElement("div");
 
   menuDiv.appendChild(startButton);
 
-  var section = document.getElementById("section");
-  section.appendChild(menuDiv);
+  document.body.appendChild(menuDiv);
+
+  //var section = document.getElementById("section");
+  //section.appendChild(menuDiv);
 
   startButton.addEventListener ("click", function() {
     menuDiv.remove();

@@ -55,13 +55,13 @@
     transform: rotateY(180deg);
   }
 
-  button {
+  .start-button {
     position: relative;
     margin-top: 20px;
     line-height: 60px;
     font-weight: bold;
     padding: 0 40px;
-    background: salmon;
+    background: rgb(114, 250, 216);
     border: none;
   }
   
