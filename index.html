@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
 
@@ -7,12 +8,23 @@
   <link rel="shortcut icon" href="img/favicon.ico" />
 
   <link rel="stylesheet" href="styles.css">
+
 </head>
+
 <body>
+
+  <audio id="demo" src="sounds/acnh-theme.mp3"></audio>
+  <div>
+    <button onclick="document.getElementById('demo').play()">Reproduzir o áudio</button>
+    <button onclick="document.getElementById('demo').pause()">Pausar o áudio</button>
+  </div>
+
   <section id="section" class="memory-game" id="gameboard">
     <!-- Cards adicionados via js -->
   </section>
 
   <script src="scripts.js"></script>
+  
 </body>
+
 </html>
