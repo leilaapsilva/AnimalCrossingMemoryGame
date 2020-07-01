@@ -121,7 +121,15 @@ function gameScene() {
   let lockBoard = false;
   let firstCard, secondCard;
 
+  var qtd = 0;
+
   function flipCard() { //vira card
+
+    //conta quantidade de clicks
+    qtd++;
+    console.log(qtd);
+    counter.innerHTML = qtd.toString();
+
     if (lockBoard) return;
     if (this === firstCard) return;
 
