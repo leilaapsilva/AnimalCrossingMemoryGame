@@ -1,24 +1,23 @@
-//TODO: Adicionar novos cards aleatoriamente no início do jogo
+const num_max = 20; //numero do maior card
 
-//TODO: Adicionar dois cards com o mesmo numero
+var cardsList = []; //lista de cards
+console.log("cardslist: ", cardsList);
 
-
-//criar logica para ser um numero que ainda nao foi
+//Função que gera o número do card a ser adicionado
 function getCardNumber(){
 
-  number = Math.floor(Math.random() * 20) + 1; //random from 1 to 100
-  strNumber = ("00" + number).slice(-3)
+  number = Math.floor((Math.random() * num_max)) + 1; //random de 1 a num_max
 
-  console.log(strNumber);
+  while(cardsList.includes(number)){ //elimina cartas repetidas
+    number = Math.floor((Math.random() * num_max)) + 1;
+  }  
 
-  cardsList.push(strNumber);
+  strNumber = ("00" + number).slice(-3) //transforma no formato "001" - "999"
+
+  cardsList.push(number); //adiciona o card na lista
 
   return strNumber;
 }
-
-var cardsList = [];
-console.log("cardslist: ", cardsList);
-
 
 //adiciona dois cards com um personagem e uma imagem de verso
 function addCard() { 
@@ -32,7 +31,6 @@ function addCard() {
     var newDiv2 = document.createElement("div"); //cria a nova div
     newDiv2.className = "memory-card"; //define a classe da div
     newDiv2.setAttribute("data-name", cardNumber);
-
 
     // CARD 1
 
@@ -72,9 +70,9 @@ function addCard() {
     console.log(section);
 }
 
-for(i = 0; i<6; i++){
-  addCard()
-
+// adiciona 12 pares de cards
+for(i = 0; i < 12; i++){
+  x = addCard()
 }
 
 //seleciona todos os cards
