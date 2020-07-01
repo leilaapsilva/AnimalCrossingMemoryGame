@@ -101,6 +101,19 @@ function gameScene() {
     x = addCard()
   }
 
+  //clicks counter
+  var counter = document.createElement("h2");
+  counter.setAttribute("id", "counter");
+  counter.setAttribute("value", 99)
+  counter.innerHTML = "0";
+
+  var counterDiv = document.createElement("div");
+
+  counterDiv.appendChild(counter);
+
+  document.body.appendChild(counterDiv);
+
+
   //seleciona todos os cards
   const cards = document.querySelectorAll('.memory-card');
 
