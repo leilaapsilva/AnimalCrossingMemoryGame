@@ -9,7 +9,7 @@
     display: flex;
     /*background: #060AB2;*/
     background-image: url("img/background1.jpg");
-    font-family: 'Alex Brush', cursive !important;
+    /* font-family: 'Alex Brush', cursive !important; */
   }
 
 
@@ -47,6 +47,7 @@
     display: flex;
     flex-wrap: wrap;
     perspective: 1000px;
+    display: none;
   }
 
 

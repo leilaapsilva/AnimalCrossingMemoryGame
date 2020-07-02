@@ -16,7 +16,7 @@ function setVisible(selector, visible){
 }
 
 onReady(function(){
-  setVisible('.page', true);
+  setVisible('.menu-class', true);
   setVisible('#loading', false);
 });
 
