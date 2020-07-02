@@ -49,12 +49,10 @@
     perspective: 1000px;
     display: none;
   }
-
-
   
   .memory-card {
-    width: calc(16.666% - 10px);
-    height: calc(25% - 10px);
+    /* width: calc(16.666% - 10px);
+    height: calc(25% - 10px); */
     margin: 5px;
     position: relative;
     transform: scale(1);
@@ -62,7 +60,33 @@
     transition: transform .5s;
     box-shadow: 1px 1px 1px rgba(0,0,0,.3);
   }
-  
+
+  /* 3 -> 33.333
+     4 -> 25
+     5 -> 20
+     6 -> 16.666 
+  */
+
+  .level1 { /* 12 cards: 4 * 3  */
+    width: calc(25% - 10px);
+    height: calc(33.333% - 10px);
+  }
+
+  .level2 { /* 18 cards: 6 * 3  */
+    width: calc(16.666% - 10px);
+    height: calc(33.333% - 10px);
+  }
+
+  .level3 { /* 30 cards: 5 * 6  */
+    width: calc(20% - 10px);
+    height: calc(16.666% - 10px);
+  }
+
+  .level4 { /* 20 cards: 5 * 8  */
+    width: calc(20% - 10px);
+    height: calc(50% - 10px);
+  }
+
   .memory-card:active {
     transform: scale(0.97);
     transition: transform .2s;

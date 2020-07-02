@@ -21,7 +21,6 @@ onReady(function(){
 });
 
 
-
 function menuScene(){
 
   //Start Button
@@ -86,16 +85,18 @@ function gameScene() {
   }
 
   //adiciona dois cards com um personagem e uma imagem de verso
-  function addCard() {
+  function addCard(level) {
 
     var cardNumber = getCardNumber();
 
     var newDiv = document.createElement("div"); //cria a nova div
-    newDiv.className = "memory-card"; //define a classe da div
+    newDiv.classList.add("memory-card"); //define a classe da div
+    newDiv.classList.add(level);
     newDiv.setAttribute("data-name", cardNumber);
 
     var newDiv2 = document.createElement("div"); //cria a nova div
-    newDiv2.className = "memory-card"; //define a classe da div
+    newDiv2.classList.add("memory-card"); //define a classe da div
+    newDiv2.classList.add(level);
     newDiv2.setAttribute("data-name", cardNumber);
 
     // CARD 1
@@ -136,9 +137,10 @@ function gameScene() {
     console.log(section);
   }
 
+  level = "level1";
   // adiciona 12 pares de cards
-  for (i = 0; i < 12; i++) {
-    x = addCard()
+  for (i = 0; i < 6; i++) {
+    x = addCard(level);
   }
 
   //clicks counter
@@ -153,6 +155,20 @@ function gameScene() {
 
   document.body.appendChild(counterDiv);
 
+
+  // quando todas as divs da classe memory-card tiverem flip, todos os cards estarao virados
+  // nivel concluído
+  function checkLevelEnd(level){
+    numCards = document.getElementsByClassName("memory-card").length;
+    //console.log(": \n\n " + numCards)
+
+    numFlippedCards = document.getElementsByClassName("flip").length;
+    //console.log(numFlippedCards);
+
+    if(numCards == numFlippedCards){
+      alert("parabens");
+    }
+  }
 
   //seleciona todos os cards
   const cards = document.querySelectorAll('.memory-card');
@@ -216,6 +232,8 @@ function gameScene() {
   function resetBoard() {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
+
+    checkLevelEnd(1);
   }
 
   (function shuffle() { //embaralha os cards no início do jogo
@@ -228,3 +246,4 @@ function gameScene() {
   cards.forEach(card => card.addEventListener('click', flipCard));
 
 }
+
