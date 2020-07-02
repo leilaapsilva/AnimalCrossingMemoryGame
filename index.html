@@ -12,28 +12,42 @@
 </head>
 
 <body>
+
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Alex+Brush" rel="stylesheet">
+  <div class="page">
+    <h1>The standard Lorem Ipsum passage</h1>
+    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+      magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
+      consequat. Duis aute irure
+      dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat
+      cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+  </div>
+  <div id="loading"></div>
+
+
   <div>
     <!-- Play/pause background music - TODO: move to scripts.js -->
     <audio id="background-music" hidden src="sounds/acnh-theme.mp3" autoplay type="audio/mpeg"></audio>
     <img id="playAudio" src="img/play.png" width="50px" height="50px">
-    
+
     <script type="text/javascript">
 
-    document.getElementById("playAudio").addEventListener("click", function(){
+      document.getElementById("playAudio").addEventListener("click", function () {
         var audio = document.getElementById('background-music');
 
         audio.play(); //autoplay
-      if(this.className == 'is-playing'){
-        this.className = "";
-        this.src = "img/mute.png"
-        audio.pause();
-      }else{
-        this.className = "is-playing";
-        this.src = "img/play.png"
-        audio.play();
-      }
-    
-    });
+        if (this.className == 'is-playing') {
+          this.className = "";
+          this.src = "img/mute.png"
+          audio.pause();
+        } else {
+          this.className = "is-playing";
+          this.src = "img/play.png"
+          audio.play();
+        }
+
+      });
     </script>
   </div>
 

@@ -9,8 +9,28 @@
     display: flex;
     /*background: #060AB2;*/
     background-image: url("img/background1.jpg");
+    font-family: 'Alex Brush', cursive !important;
   }
-  
+
+
+  .page    { display: none; padding: 0 0.5em; }
+  .page h1 { font-size: 2em; line-height: 1em; margin-top: 1.1em; font-weight: bold; }
+  .page p  { font-size: 1.5em; line-height: 1.275em; margin-top: 0.15em; }
+
+  #loading {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(192, 192, 192, 0.5);
+    background-image: url("https://i.stack.imgur.com/MnyxU.gif");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+    
   .memory-game {
     width: 900px;
     height: 800px;
