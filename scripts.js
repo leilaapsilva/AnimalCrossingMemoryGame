@@ -66,7 +66,7 @@ function gameScene(level) {
   alert(strLevel);
 
 
-  const num_max = 20; //numero do maior card
+  const num_max = 50; //numero do maior card
 
   var cardsList = []; //lista de cards
   console.log("cardslist: ", cardsList);
