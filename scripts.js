@@ -1,5 +1,15 @@
+//Quando a página é carregada completamente
+window.onload = function(){ 
+  //document.getElementById("loading").style.display = "none"
+  setVisible('.menu-class', true);
+  setVisible('#loading', false);
+
+  this.menuScene();
+}
+
+
 //inicia a página apenas com o menu
-menuScene();
+//menuScene();
 
 //aguarda o carregamento da pagina
 function onReady(callback){
@@ -15,10 +25,10 @@ function setVisible(selector, visible){
   document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-onReady(function(){
-  setVisible('.menu-class', true);
-  setVisible('#loading', false);
-});
+// onReady(function(){
+//   setVisible('.menu-class', true);
+//   setVisible('#loading', false);
+// });
 
 
 function menuScene(){
