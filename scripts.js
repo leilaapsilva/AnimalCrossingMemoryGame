@@ -62,6 +62,10 @@ function menuScene(){
 //Cena do jogo em si
 function gameScene(level) {
 
+  strLevel = "level" + level.toString();
+  alert(strLevel);
+
+
   const num_max = 20; //numero do maior card
 
   var cardsList = []; //lista de cards
@@ -84,11 +88,9 @@ function gameScene(level) {
   }
 
   //adiciona dois cards com um personagem e uma imagem de verso
-  function addCard(level) {
+  function addCard(strLevel) {
 
     var cardNumber = getCardNumber();
-
-    strLevel = "level" + level.toString();
 
     var newDiv = document.createElement("div"); //cria a nova div
     newDiv.classList.add("memory-card"); //define a classe da div
@@ -146,14 +148,21 @@ function gameScene(level) {
       num_pares = 6;
       break;
     case (2): 
-      num_pares = 9;
+      num_pares = 8;
       break;
-
+    case (3):
+      num_pares = 10;
+      break;
+    case (4):
+      num_pares = 12;   
+      break;
   }
+
+  strLevel = "level" + level.toString();
 
   // adiciona 12 pares de cards
   for (i = 0; i < num_pares; i++) {
-    x = addCard(level);
+    x = addCard(strLevel);
   }
 
   //clicks counter
@@ -179,19 +188,14 @@ function gameScene(level) {
     //console.log(numFlippedCards);
 
     if(numCards == numFlippedCards){
-      alert("parabens");
-      
-      //var section = document.getElementById("section");
-      //section.remove();
+      alert("Nível " + level.toString() + " concluído :)");
 
-      //var cards = document.getElementsByClassName("level1");
-      //cards.parentNode.removeChild(cards);
-
-      const elements = document.getElementsByClassName("level1");
-
+      //remove cartas do nível atual
+      const elements = document.getElementsByClassName(strLevel);
       while (elements.length > 0) elements[0].remove();
 
-      level++;
+      //inicia tela do próximo nível
+      level = level+1;
       gameScene(level);
     }
   }
@@ -259,7 +263,7 @@ function gameScene(level) {
     [hasFlippedCard, lockBoard] = [false, false];
     [firstCard, secondCard] = [null, null];
 
-    checkLevelEnd(1);
+    checkLevelEnd(level);
   }
 
   (function shuffle() { //embaralha os cards no início do jogo
