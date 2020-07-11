@@ -160,12 +160,16 @@ function gameScene(level) {
 
   strLevel = "level" + level.toString();
 
-  // adiciona 12 pares de cards
+  // adiciona os pares de cards de acordo com o nível
   for (i = 0; i < num_pares; i++) {
     x = addCard(strLevel);
   }
 
   //clicks counter
+  var counterLabel = document.createElement("h2");
+  counterLabel.setAttribute("id", "counterLabel");
+  counterLabel.innerHTML = "Cliques: ";
+
   var counter = document.createElement("h2");
   counter.setAttribute("id", "counter");
   counter.setAttribute("value", 99)
@@ -173,7 +177,9 @@ function gameScene(level) {
 
   var counterDiv = document.createElement("div");
 
+  counterDiv.appendChild(counterLabel);
   counterDiv.appendChild(counter);
+ 
 
   document.body.appendChild(counterDiv);
 
@@ -193,6 +199,8 @@ function gameScene(level) {
       //remove cartas do nível atual
       const elements = document.getElementsByClassName(strLevel);
       while (elements.length > 0) elements[0].remove();
+
+      counterDiv.remove();
 
       //inicia tela do próximo nível
       level = level+1;
@@ -256,7 +264,7 @@ function gameScene(level) {
       secondCard.classList.remove('flip');
 
       resetBoard();
-    }, 1500);
+    }, 1000);
   }
 
   function resetBoard() {
