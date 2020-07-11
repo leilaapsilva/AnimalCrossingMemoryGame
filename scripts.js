@@ -1,4 +1,4 @@
-
+//inicia a página apenas com o menu
 menuScene();
 
 //aguarda o carregamento da pagina
@@ -52,16 +52,15 @@ function menuScene(){
 
   startButton.addEventListener ("click", function() {
     menuSection.remove();
-    gameScene();
+    gameScene(1);
   });
 }
-
 
 //Inicia o jogo
 //gameScene()
 
 //Cena do jogo em si
-function gameScene() {
+function gameScene(level) {
 
   const num_max = 20; //numero do maior card
 
@@ -89,14 +88,16 @@ function gameScene() {
 
     var cardNumber = getCardNumber();
 
+    strLevel = "level" + level.toString();
+
     var newDiv = document.createElement("div"); //cria a nova div
     newDiv.classList.add("memory-card"); //define a classe da div
-    newDiv.classList.add(level);
+    newDiv.classList.add(strLevel);
     newDiv.setAttribute("data-name", cardNumber);
 
     var newDiv2 = document.createElement("div"); //cria a nova div
     newDiv2.classList.add("memory-card"); //define a classe da div
-    newDiv2.classList.add(level);
+    newDiv2.classList.add(strLevel);
     newDiv2.setAttribute("data-name", cardNumber);
 
     // CARD 1
@@ -137,9 +138,21 @@ function gameScene() {
     console.log(section);
   }
 
-  level = "level1";
+  //strLevel = "level" + level.toString();
+
+  num_pares = 0;
+  switch(level){
+    case (1): 
+      num_pares = 6;
+      break;
+    case (2): 
+      num_pares = 9;
+      break;
+
+  }
+
   // adiciona 12 pares de cards
-  for (i = 0; i < 6; i++) {
+  for (i = 0; i < num_pares; i++) {
     x = addCard(level);
   }
 
@@ -167,6 +180,19 @@ function gameScene() {
 
     if(numCards == numFlippedCards){
       alert("parabens");
+      
+      //var section = document.getElementById("section");
+      //section.remove();
+
+      //var cards = document.getElementsByClassName("level1");
+      //cards.parentNode.removeChild(cards);
+
+      const elements = document.getElementsByClassName("level1");
+
+      while (elements.length > 0) elements[0].remove();
+
+      level++;
+      gameScene(level);
     }
   }
 
