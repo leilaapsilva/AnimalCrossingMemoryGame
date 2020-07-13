@@ -38,7 +38,7 @@ function menuScene(){
   startButton.setAttribute("id", startButton);
   //startButton.innerHTML = "Start";
   startButton.className = "menu-button";
-  startButton.src = "img/isabelle.png";
+  startButton.src = "img/isabelle-start.png";
   startButton.id = "isabelle";
   startButton.setAttribute("width", "300px");
   //startButton.src = "img/play.png";
