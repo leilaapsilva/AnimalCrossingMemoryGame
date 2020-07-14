@@ -3,13 +3,9 @@ window.onload = function(){
   //document.getElementById("loading").style.display = "none"
   setVisible('.menu-class', true);
   setVisible('#loading', false);
-
+  //inicia a página apenas com o menu
   this.menuScene();
 }
-
-
-//inicia a página apenas com o menu
-//menuScene();
 
 //aguarda o carregamento da pagina
 function onReady(callback){
@@ -25,61 +21,40 @@ function setVisible(selector, visible){
   document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-// onReady(function(){
-//   setVisible('.menu-class', true);
-//   setVisible('#loading', false);
-// });
-
-
+// --------------------------------- Menu Scene ---------------------------------------
 function menuScene(){
 
   //Start Button
   var startButton = document.createElement("img");
   startButton.setAttribute("id", startButton);
-  //startButton.innerHTML = "Start";
   startButton.className = "menu-button";
   startButton.src = "img/isabelle-start.png";
   startButton.id = "isabelle";
   startButton.setAttribute("width", "300px");
-  //startButton.src = "img/play.png";
-
-  // var creditsButton = document.createElement("button");
-  // creditsButton.setAttribute("id", creditsButton);
-  // creditsButton.innerHTML = "Créditos";
-  // creditsButton.className = "menu-button";
-
 
   //Menu com botões
   var menuDiv = document.createElement("div");
   menuDiv.appendChild(startButton);
-  // menuDiv.appendChild(creditsButton);
-
 
   //adiciona div à section
   var menuSection = document.getElementById("menu-section");
   menuSection.appendChild(menuDiv);
 
-
   startButton.addEventListener ("click", function() {
     menuSection.remove();
+    //Inicia o jogo no nível 1
     gameScene(1);
   });
 }
 
-//Inicia o jogo
-//gameScene()
-
-//Cena do jogo em si
+// --------------------------------- Game Scene -----------------------------------------
 function gameScene(level) {
-
-  
 
    //Cria section do jogo
    var gameSection = document.createElement("section");
    gameSection.id = "section";
    gameSection.className = "memory-game";
    document.body.appendChild(gameSection);
-
 
   //Barra de navegação superior
   var topNav = document.createElement("div");
@@ -97,16 +72,8 @@ function gameScene(level) {
   var musicButtonImg = document.createElement("img");
   musicButtonImg.id = "playAudio";
   musicButtonImg.src = "img/play.png";
-  //musicButtonImg.width = "50px";
-  //musicButtonImg.height = "50px";
 
   topNav.appendChild(musicButtonImg);
-
-  //<audio id="background-music" hidden src="sounds/acnh-theme.mp3" autoplay type="audio/mpeg"></audio>
-  //<img id="playAudio" src="img/play.png" width="50px" height="50px">
-
-
-  //topNav.appendChild(test1);
   gameSection.appendChild(topNav); 
 
   document.getElementById("playAudio").addEventListener("click", function () {
@@ -125,17 +92,17 @@ function gameScene(level) {
 
   });
 
-  //id="section" class="memory-game"
-
-
   //converte o nível para string
   strLevel = "level" + level.toString();
-  //alert(strLevel);
+
+  var showLevel = document.createElement("h1");
+  showLevel.innerHTML = "Level " + level.toString();
+  topNav.appendChild(showLevel);
 
   const num_max = 50; //numero do maior card
 
   var cardsList = []; //lista de cards
-  console.log("cardslist: ", cardsList);
+  //console.log("cardslist: ", cardsList);
 
   //Função que gera o número do card a ser adicionado
   function getCardNumber() {
@@ -200,14 +167,11 @@ function gameScene(level) {
     newDiv2.appendChild(newImgBack2);
 
     //adiciona div à section
-    //var section = document.getElementById("section");
     gameSection.appendChild(newDiv);
     gameSection.appendChild(newDiv2);
-    //console.log(section);
   }
 
-  //strLevel = "level" + level.toString();
-
+  //determina o número de pares em cada nível
   num_pares = 0;
   switch(level){
     case (1): 
@@ -231,41 +195,37 @@ function gameScene(level) {
     x = addCard(strLevel);
   }
 
-  //clicks counter
+  //contador de cliques/tentativas
   var counterLabel = document.createElement("h2");
   counterLabel.setAttribute("id", "counterLabel");
   counterLabel.innerHTML = "Cliques: ";
 
   var counter = document.createElement("h2");
   counter.setAttribute("id", "counter");
-  counter.setAttribute("value", 99)
+  //counter.setAttribute("value", 99)
   counter.innerHTML = "0";
 
   var counterDiv = document.createElement("div");
 
   counterDiv.appendChild(counterLabel);
   counterDiv.appendChild(counter);
- 
+  topNav.appendChild(counterDiv);
 
-  document.body.appendChild(counterDiv);
-
-
-  // quando todas as divs da classe memory-card tiverem flip, todos os cards estarao virados
-  // nivel concluído
+  // quando todas as divs da classe memory-card tiverem a classe flip, todos os cards estarao virados
+  // -> nível concluído
   function checkLevelEnd(level){
     numCards = document.getElementsByClassName("memory-card").length;
-    //console.log(": \n\n " + numCards)
 
     numFlippedCards = document.getElementsByClassName("flip").length;
-    //console.log(numFlippedCards);
 
     if(numCards == numFlippedCards){
-      //alert("Nível " + level.toString() + " concluído :)");
+      //TODO: adicionar mensagem de nível concluído
 
       //remove cartas do nível atual
       const elements = document.getElementsByClassName(strLevel);
       while (elements.length > 0) elements[0].remove();
 
+      gameSection.remove();
       counterDiv.remove();
 
       //inicia tela do próximo nível
@@ -306,7 +266,7 @@ function gameScene(level) {
     // second click
     secondCard = this;
 
-    checkForMatch(); //verifica se é igual
+    checkForMatch(); //verifica se os cards clicados são iguais
   }
 
   function checkForMatch() {
