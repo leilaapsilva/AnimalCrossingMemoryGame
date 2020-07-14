@@ -134,44 +134,60 @@
     filter:drop-shadow(5px 3px 0 white) drop-shadow(-1px -1px 0 white);
   }
 
-  #counter, #counterLabel{
-    background-color: rgba(11, 31, 24, 0.541);
-    /* font-family: 'FinkHeavy', sans-serif; */
+  #counter, #counterLabel, #showlevel{
+    /* background-color: rgba(11, 31, 24, 0.541);
+    font-family: 'FinkHeavy';  */
     
+    font-size: 40px;
+
   }
 
-  /* h4{
-    background-color: yellow;
-    font-family: 'FinkHeavy', sans-serif;
-  } */
+  #counter, #counterLabel {
+      display: inline;
+  }
   
   #section{
+    height: 900px;
     background-color: rgba(0, 128, 128, 0.829);
     opacity: 100%;
+ 
+
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
   }
 
 /* Barra de navegação superior */
 
 .topnav {
   overflow: hidden;
-  background-color:rgba(0, 128, 128, 0.829);
+  background-color:rgba(133, 197, 197, 0.829);
   width: 900px;
+  height: 100px;
+  overflow: auto;
 }
 
 .topnav a {
   float: left;
   color: #f2f2f2;
-  text-align: center;
-  padding: 14px 16px;
+  /* text-align: center; */
+  /* padding: 15px 16px;  */
+  vertical-align: middle;
   text-decoration: none;
-  font-size: 17px;
-  
+  font-size: 16px;
+  width: 33.333%;
 }
 
-.topnav a:hover {
+#kkimage {
+  padding: 10px 16px;
+}
+
+/* .topnav a:hover {
   background-color: #ddd;
   color: black;
-}
+} */
 
 .topnav a.active {
   background-color: #4CAF50;
@@ -179,6 +195,6 @@
 }
 
 #playAudio {
-  width: 50px;
-  height: 50px;
+  width: 80px;
+  height: 80px;
 }

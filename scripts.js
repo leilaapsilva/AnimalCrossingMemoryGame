@@ -53,7 +53,8 @@ function gameScene(level) {
    //Cria section do jogo
    var gameSection = document.createElement("section");
    gameSection.id = "section";
-   gameSection.className = "memory-game";
+
+   //gameSection.className = "memory-game";
    document.body.appendChild(gameSection);
 
   //Barra de navegação superior
@@ -69,11 +70,17 @@ function gameScene(level) {
   musicButton.src = "sounds/acnh-theme.mp3";
   musicButton.type = "audio/mpeg";
 
+  var a1 = document.createElement("a");
+  a1.id = "kkimage";
+  var a2 = document.createElement("a");
+  var a3 = document.createElement("a");
+  var a4 = document.createElement("a");
   var musicButtonImg = document.createElement("img");
   musicButtonImg.id = "playAudio";
-  musicButtonImg.src = "img/play.png";
+  musicButtonImg.src = "img/kkslider.png";
 
-  topNav.appendChild(musicButtonImg);
+  a1.appendChild(musicButtonImg);
+  topNav.appendChild(a1);
   gameSection.appendChild(topNav); 
 
   document.getElementById("playAudio").addEventListener("click", function () {
@@ -82,22 +89,31 @@ function gameScene(level) {
     audio.play(); //autoplay
     if (this.className == 'is-playing') {
       this.className = "";
-      this.src = "img/mute.png"
+      this.src = "img/kkslider-mute.png"
       audio.pause();
     } else {
       this.className = "is-playing";
-      this.src = "img/play.png"
+      this.src = "img/kkslider.png"
       audio.play();
     }
 
   });
 
+  //Área das cartas
+  var cardsDiv = document.createElement("div");
+   cardsDiv.id = "cardsDiv";
+   cardsDiv.className = "memory-game"
+   gameSection.appendChild(cardsDiv);
+
+
   //converte o nível para string
   strLevel = "level" + level.toString();
 
   var showLevel = document.createElement("h1");
+  showLevel.id = "showlevel";
   showLevel.innerHTML = "Level " + level.toString();
-  topNav.appendChild(showLevel);
+  a2.appendChild(showLevel);
+  topNav.appendChild(a2);
 
   const num_max = 50; //numero do maior card
 
@@ -167,8 +183,8 @@ function gameScene(level) {
     newDiv2.appendChild(newImgBack2);
 
     //adiciona div à section
-    gameSection.appendChild(newDiv);
-    gameSection.appendChild(newDiv2);
+    cardsDiv.appendChild(newDiv);
+    cardsDiv.appendChild(newDiv2);
   }
 
   //determina o número de pares em cada nível
@@ -205,11 +221,14 @@ function gameScene(level) {
   //counter.setAttribute("value", 99)
   counter.innerHTML = "0";
 
-  var counterDiv = document.createElement("div");
+  //var counterDiv = document.createElement("div");
 
-  counterDiv.appendChild(counterLabel);
-  counterDiv.appendChild(counter);
-  topNav.appendChild(counterDiv);
+  //counterDiv.appendChild(counterLabel);
+  //counterDiv.appendChild(counter);
+  a3.appendChild(counterLabel);
+  a3.appendChild(counter);
+  topNav.appendChild(a3);
+  topNav.appendChild(a4);
 
   // quando todas as divs da classe memory-card tiverem a classe flip, todos os cards estarao virados
   // -> nível concluído
@@ -226,7 +245,7 @@ function gameScene(level) {
       while (elements.length > 0) elements[0].remove();
 
       gameSection.remove();
-      counterDiv.remove();
+      //counterDiv.remove();
 
       //inicia tela do próximo nível
       level = level+1;
