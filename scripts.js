@@ -72,9 +72,65 @@ function menuScene(){
 //Cena do jogo em si
 function gameScene(level) {
 
-  strLevel = "level" + level.toString();
-  alert(strLevel);
+  
 
+   //Cria section do jogo
+   var gameSection = document.createElement("section");
+   gameSection.id = "section";
+   gameSection.className = "memory-game";
+   document.body.appendChild(gameSection);
+
+
+  //Barra de navegação superior
+  var topNav = document.createElement("div");
+  topNav.className = "topnav";
+  var test1 = document.createElement("a");
+  test1.className = "active";
+  test1.innerHTML = "Home";
+
+  //Botão música
+  var musicButton = document.createElement("audio");
+  musicButton.id = "background-music";
+  musicButton.src = "sounds/acnh-theme.mp3";
+  musicButton.type = "audio/mpeg";
+
+  var musicButtonImg = document.createElement("img");
+  musicButtonImg.id = "playAudio";
+  musicButtonImg.src = "img/play.png";
+  //musicButtonImg.width = "50px";
+  //musicButtonImg.height = "50px";
+
+  topNav.appendChild(musicButtonImg);
+
+  //<audio id="background-music" hidden src="sounds/acnh-theme.mp3" autoplay type="audio/mpeg"></audio>
+  //<img id="playAudio" src="img/play.png" width="50px" height="50px">
+
+
+  //topNav.appendChild(test1);
+  gameSection.appendChild(topNav); 
+
+  document.getElementById("playAudio").addEventListener("click", function () {
+    var audio =musicButton;
+
+    audio.play(); //autoplay
+    if (this.className == 'is-playing') {
+      this.className = "";
+      this.src = "img/mute.png"
+      audio.pause();
+    } else {
+      this.className = "is-playing";
+      this.src = "img/play.png"
+      audio.play();
+    }
+
+  });
+
+  //id="section" class="memory-game"
+
+
+  //converte o nível para string
+  strLevel = "level" + level.toString();
+  //alert(strLevel);
 
   const num_max = 50; //numero do maior card
 
@@ -144,10 +200,10 @@ function gameScene(level) {
     newDiv2.appendChild(newImgBack2);
 
     //adiciona div à section
-    var section = document.getElementById("section");
-    section.appendChild(newDiv);
-    section.appendChild(newDiv2);
-    console.log(section);
+    //var section = document.getElementById("section");
+    gameSection.appendChild(newDiv);
+    gameSection.appendChild(newDiv2);
+    //console.log(section);
   }
 
   //strLevel = "level" + level.toString();
@@ -204,7 +260,7 @@ function gameScene(level) {
     //console.log(numFlippedCards);
 
     if(numCards == numFlippedCards){
-      alert("Nível " + level.toString() + " concluído :)");
+      //alert("Nível " + level.toString() + " concluído :)");
 
       //remove cartas do nível atual
       const elements = document.getElementsByClassName(strLevel);

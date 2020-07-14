@@ -21,30 +21,7 @@
   </div>  
 
 
-  <div>
-    <!-- Play/pause background music - TODO: move to scripts.js -->
-    <audio id="background-music" hidden src="sounds/acnh-theme.mp3" autoplay type="audio/mpeg"></audio>
-    <img id="playAudio" src="img/play.png" width="50px" height="50px">
-
-    <script type="text/javascript">
-
-      document.getElementById("playAudio").addEventListener("click", function () {
-        var audio = document.getElementById('background-music');
-
-        audio.play(); //autoplay
-        if (this.className == 'is-playing') {
-          this.className = "";
-          this.src = "img/mute.png"
-          audio.pause();
-        } else {
-          this.className = "is-playing";
-          this.src = "img/play.png"
-          audio.play();
-        }
-
-      });
-    </script>
-  </div>
+  
 
 
   <h4>By Leila Aparecida da Silva</h4>
@@ -52,10 +29,10 @@
   <section id="menu-section" class="menu-class">
 
   </section>
-
+<!-- 
   <section id="section" class="memory-game" id="gameboard">
-    <!-- Cards adicionados via js -->
-  </section>
+    
+  </section> -->
 
   <script src="scripts.js"></script>
 
