@@ -27,6 +27,7 @@ function modalLevelEnd(level){
   divModal.className = "modal";
   
   divModalContent = document.createElement("div");
+  divModalContent.className = "modal-content";
   spanModal = document.createElement("span");
   spanModal.className = "close";
   spanModal.innerHTML = "&times;";
@@ -34,9 +35,20 @@ function modalLevelEnd(level){
   pModal = document.createElement("p");
   pModal.innerHTML = "Nível " + level.toString() + " concluído!";
 
+  imgModal = document.createElement("img");
+  imgModal.id = "imgModal";
+  imgModal.src = "img/celebration.gif"
+
+  btnModal = document.createElement("button");
+  btnModal.innerHTML = "Continuar";
+  btnModal.id = "btn-modal";
+
+
   //
   divModalContent.appendChild(spanModal);
   divModalContent.appendChild(pModal);
+  divModalContent.appendChild(imgModal);
+  divModalContent.appendChild(btnModal);
   divModal.appendChild(divModalContent);
 
 
@@ -46,6 +58,11 @@ function modalLevelEnd(level){
   gameSection = document.getElementById("section");
 
   gameSection.appendChild(divModal);
+
+  btnModal.onclick = function(){
+    divModal.style.display = "none";
+    removeModal(level);
+  }
 
   spanModal.onclick = function(){
     divModal.style.display = "none";

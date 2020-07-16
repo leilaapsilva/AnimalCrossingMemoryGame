@@ -219,13 +219,17 @@
 
 /* Modal Content */
 .modal-content {
-  background-color: #fefefe;
+  background-color: #f5ecc5;
   margin: auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 80%;
-  height: 80%;
-  font-size: 20px;
+  width: 75%;
+  height: 75%;
+  font-size: 40px;
+  text-align: center;
+  /* vertical-align: middle; */
+  border-radius: 20px;
+
 }
 
 /* The Close Button */
@@ -242,3 +246,39 @@
   text-decoration: none;
   cursor: pointer;
 }
+
+#imgModal {
+  padding-top: 50px;
+  vertical-align: center;
+  width: 90%;
+  
+}
+
+#btn-modal {
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: rgb(97, 190, 147);
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 9px #999;
+  width: 100px;
+  height: 40px;
+  text-align: center;
+  
+}
+
+#btn-modal:hover {background-color: rgb(133, 216, 177);}
+
+#btn-modal:active {
+  background-color: rgb(74, 177, 129) ;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+
+/* ------------------------------------------------------ */
+
+ 
