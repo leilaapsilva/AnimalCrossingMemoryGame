@@ -21,6 +21,56 @@ function setVisible(selector, visible){
   document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
+function modalLevelEnd(level){
+  divModal = document.createElement("div");
+  divModal.id = "myModal";
+  divModal.className = "modal";
+  
+  divModalContent = document.createElement("div");
+  spanModal = document.createElement("span");
+  spanModal.className = "close";
+  spanModal.innerHTML = "&times;";
+  
+  pModal = document.createElement("p");
+  pModal.innerHTML = "Nível " + level.toString() + " concluído!";
+
+  //
+  divModalContent.appendChild(spanModal);
+  divModalContent.appendChild(pModal);
+  divModal.appendChild(divModalContent);
+
+
+
+  divModal.style.display = "block";
+
+  gameSection = document.getElementById("section");
+
+  gameSection.appendChild(divModal);
+
+  spanModal.onclick = function(){
+    divModal.style.display = "none";
+    removeModal(level);
+  }
+
+}
+
+function removeModal(level){
+  //remove o modal e vai para o proximo nivel
+  divModal.remove()
+
+  //remove cartas do nível atual
+  const elements = document.getElementsByClassName(strLevel);
+  while (elements.length > 0) elements[0].remove();
+
+  gameSection.remove();
+     
+  //inicia tela do próximo nível
+  level = level+1;
+  gameScene(level);
+
+}
+
+
 // --------------------------------- Menu Scene ---------------------------------------
 function menuScene(){
 
@@ -60,9 +110,9 @@ function gameScene(level) {
   //Barra de navegação superior
   var topNav = document.createElement("div");
   topNav.className = "topnav";
-  var test1 = document.createElement("a");
-  test1.className = "active";
-  test1.innerHTML = "Home";
+  // var test1 = document.createElement("a");
+  // test1.className = "active";
+  // test1.innerHTML = "Home";
 
   //Botão música
   var musicButton = document.createElement("audio");
@@ -105,6 +155,15 @@ function gameScene(level) {
    cardsDiv.className = "memory-game"
    gameSection.appendChild(cardsDiv);
 
+
+  //Barra inferior
+  // bottomNav = document.createElement("div");
+  // bottomNav.className = "bottomnav";
+  // var test1 = document.createElement("a");
+  // test1.className = "active";
+  // test1.innerHTML = "Home";
+  // bottomNav.appendChild(test1);
+  // gameSection.appendChild(bottomNav); 
 
   //converte o nível para string
   strLevel = "level" + level.toString();
@@ -240,16 +299,18 @@ function gameScene(level) {
     if(numCards == numFlippedCards){
       //TODO: adicionar mensagem de nível concluído
 
-      //remove cartas do nível atual
-      const elements = document.getElementsByClassName(strLevel);
-      while (elements.length > 0) elements[0].remove();
+      modalLevelEnd(level)
 
-      gameSection.remove();
-      //counterDiv.remove();
+      //remove cartas do nível atual
+      // const elements = document.getElementsByClassName(strLevel);
+      // while (elements.length > 0) elements[0].remove();
+
+      // gameSection.remove();
+     
 
       //inicia tela do próximo nível
-      level = level+1;
-      gameScene(level);
+      // level = level+1;
+      // gameScene(level);
     }
   }
 
