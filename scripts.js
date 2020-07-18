@@ -191,7 +191,7 @@ function gameScene(level) {
   a2.appendChild(showLevel);
   topNav.appendChild(a2);
 
-  const num_max = 50; //numero do maior card
+  const num_max = 120; //numero do maior card
 
   var cardsList = []; //lista de cards
   //console.log("cardslist: ", cardsList);
