@@ -1,5 +1,5 @@
 //Quando a página é carregada completamente
-window.onload = function () {
+window.onload = function(){ 
   //document.getElementById("loading").style.display = "none"
   setVisible('.menu-class', true);
   setVisible('#loading', false);
@@ -8,32 +8,32 @@ window.onload = function () {
 }
 
 //aguarda o carregamento da pagina
-function onReady(callback) {
-  var intervalId = window.setInterval(function () {
-    if (document.getElementsByTagName('body')[0] !== undefined) {
+function onReady(callback){
+  var intervalId = window.setInterval(function(){
+    if (document.getElementsByTagName('body')[0] !== undefined){
       window.clearInterval(intervalId);
       callback.call(this);
     }
   }, 1000);
 }
 
-function setVisible(selector, visible) {
+function setVisible(selector, visible){
   document.querySelector(selector).style.display = visible ? 'block' : 'none';
 }
 
-function modalLevelEnd(level) {
+function modalLevelEnd(level){
   divModal = document.createElement("div");
   divModal.id = "myModal";
   divModal.className = "modal";
-
+  
   divModalContent = document.createElement("div");
   divModalContent.className = "modal-content";
   spanModal = document.createElement("span");
   spanModal.className = "close";
   spanModal.innerHTML = "&times;";
-
+  
   pModal = document.createElement("p");
-  pModal.innerHTML = `Nível ${level} concluído!`;
+  pModal.innerHTML = "Nível " + level.toString() + " concluído!";
 
   imgModal = document.createElement("img");
   imgModal.id = "imgModal";
@@ -59,19 +59,19 @@ function modalLevelEnd(level) {
 
   gameSection.appendChild(divModal);
 
-  btnModal.onclick = function () {
+  btnModal.onclick = function(){
     divModal.style.display = "none";
     removeModal(level);
   }
 
-  spanModal.onclick = function () {
+  spanModal.onclick = function(){
     divModal.style.display = "none";
     removeModal(level);
   }
 
 }
 
-function removeModal(level) {
+function removeModal(level){
   //remove o modal e vai para o proximo nivel
   divModal.remove()
 
@@ -80,16 +80,16 @@ function removeModal(level) {
   while (elements.length > 0) elements[0].remove();
 
   gameSection.remove();
-
+     
   //inicia tela do próximo nível
-  level = level + 1;
+  level = level+1;
   gameScene(level);
 
 }
 
 
 // --------------------------------- Menu Scene ---------------------------------------
-function menuScene() {
+function menuScene(){
 
   //Start Button
   var startButton = document.createElement("img");
@@ -107,7 +107,7 @@ function menuScene() {
   var menuSection = document.getElementById("menu-section");
   menuSection.appendChild(menuDiv);
 
-  startButton.addEventListener("click", function () {
+  startButton.addEventListener ("click", function() {
     menuSection.remove();
     //Inicia o jogo no nível 1
     gameScene(1);
@@ -117,12 +117,12 @@ function menuScene() {
 // --------------------------------- Game Scene -----------------------------------------
 function gameScene(level) {
 
-  //Cria section do jogo
-  var gameSection = document.createElement("section");
-  gameSection.id = "section";
+   //Cria section do jogo
+   var gameSection = document.createElement("section");
+   gameSection.id = "section";
 
-  //gameSection.className = "memory-game";
-  document.body.appendChild(gameSection);
+   //gameSection.className = "memory-game";
+   document.body.appendChild(gameSection);
 
   //Barra de navegação superior
   var topNav = document.createElement("div");
@@ -148,10 +148,10 @@ function gameScene(level) {
 
   a1.appendChild(musicButtonImg);
   topNav.appendChild(a1);
-  gameSection.appendChild(topNav);
+  gameSection.appendChild(topNav); 
 
   document.getElementById("playAudio").addEventListener("click", function () {
-    var audio = musicButton;
+    var audio =musicButton;
 
     audio.play(); //autoplay
     if (this.className == 'is-playing') {
@@ -168,9 +168,9 @@ function gameScene(level) {
 
   //Área das cartas
   var cardsDiv = document.createElement("div");
-  cardsDiv.id = "cardsDiv";
-  cardsDiv.className = "memory-game"
-  gameSection.appendChild(cardsDiv);
+   cardsDiv.id = "cardsDiv";
+   cardsDiv.className = "memory-game"
+   gameSection.appendChild(cardsDiv);
 
 
   //Barra inferior
@@ -265,18 +265,18 @@ function gameScene(level) {
 
   //determina o número de pares em cada nível
   num_pares = 0;
-  switch (level) {
-    case (1):
+  switch(level){
+    case (1): 
       num_pares = 6;
       break;
-    case (2):
+    case (2): 
       num_pares = 8;
       break;
     case (3):
       num_pares = 10;
       break;
     case (4):
-      num_pares = 12;
+      num_pares = 12;   
       break;
   }
 
@@ -308,12 +308,12 @@ function gameScene(level) {
 
   // quando todas as divs da classe memory-card tiverem a classe flip, todos os cards estarao virados
   // -> nível concluído
-  function checkLevelEnd(level) {
+  function checkLevelEnd(level){
     numCards = document.getElementsByClassName("memory-card").length;
 
     numFlippedCards = document.getElementsByClassName("flip").length;
 
-    if (numCards == numFlippedCards) {
+    if(numCards == numFlippedCards){
       //TODO: adicionar mensagem de nível concluído
 
       modalLevelEnd(level)
@@ -323,7 +323,7 @@ function gameScene(level) {
       // while (elements.length > 0) elements[0].remove();
 
       // gameSection.remove();
-
+     
 
       //inicia tela do próximo nível
       // level = level+1;
