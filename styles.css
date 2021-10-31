@@ -255,19 +255,16 @@
 }
 
 #btn-modal {
-  margin-left: auto;
-  margin-right: auto;
   cursor: pointer;
   outline: none;
   color: #fff;
   background-color: rgb(97, 190, 147);
   border: none;
   border-radius: 15px;
-  box-shadow: 0 9px #999;
+  box-shadow: 0 4pxpx #999;
   width: 100px;
   height: 40px;
   text-align: center;
-  
 }
 
 #btn-modal:hover {background-color: rgb(133, 216, 177);}
