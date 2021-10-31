@@ -10,6 +10,6 @@ Jogue em:
 
 ![Imagem do jogo](img/printscreen.png)
 
-Atualizado em 16/07/20
+Atualizado em 31/10/21
 
 TO DO: Deixar o jogo de forma genérica, de modo que possam ser criados jogos da memória de outros temas
